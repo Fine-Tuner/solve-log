@@ -17,6 +17,22 @@ const input = (caseNumber) => {
 }
 
 function solution(input) {
-    
+    let answer = '';
+
+    const personCount = Number(input[0][0]);
+    const needTshirtCountBySize = input[1].map((str) => Number(str));
+    const tshirtGroupSize = Number(input[2][0]);
+    const penGroupSize = Number(input[2][1]);
+
+    const resultTshirtGroupCount = needTshirtCountBySize.reduce((acc, needTshirtCount) => {
+        return acc + Math.ceil(needTshirtCount/tshirtGroupSize)
+    }, 0)
+    const resultPenGroupCount = Math.floor(personCount/penGroupSize);
+    const resultPenRestCount = Math.floor(personCount%penGroupSize);
+
+    answer = `${resultTshirtGroupCount}
+${resultPenGroupCount} ${resultPenRestCount}`
+
+    return answer;
 }
-console.log(solution(input(1)));
+console.log(solution(input(3)));

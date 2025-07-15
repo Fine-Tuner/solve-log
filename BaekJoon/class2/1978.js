@@ -17,6 +17,24 @@ const input = (caseNumber) => {
 }
 
 function solution(input) {
-    
+    let answer = 0;
+    const numbers = input[1];
+
+    const isPrime = (inputNumber) => {
+        if(inputNumber < 2) return false;
+        for(let startNumber=2; startNumber<=Math.sqrt(inputNumber); startNumber++) {
+            if(inputNumber%startNumber === 0) return false;
+        }
+        return true;
+    }
+
+    answer = numbers.reduce((acc, currentNumber) => {
+        if(isPrime(currentNumber)) {
+            return acc + 1;
+        }
+        return acc;
+    }, 0)
+
+    return answer;
 }
-console.log(solution(input(1)));
+console.log(solution(input(3)));

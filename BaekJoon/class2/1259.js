@@ -17,6 +17,17 @@ const input = (caseNumber) => {
 }
 
 function solution(input) {
-    
+    let answer = "";
+    for(let index=0; index<input.length; index++) {
+        const strNumber = input[index][0];
+        if(strNumber === '0') {
+            continue;
+        }
+
+        const reversedStrNumber = strNumber.split('').reverse().join('');
+        answer += `${strNumber === reversedStrNumber ? 'yes' : 'no'}\n`;
+    }
+
+    return answer;
 }
-console.log(solution(input(1)));
+console.log(solution(input(3)));

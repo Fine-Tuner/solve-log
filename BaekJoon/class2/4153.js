@@ -17,6 +17,17 @@ const input = (caseNumber) => {
 }
 
 function solution(input) {
-    
+    let answer = '';
+
+    for(let i=0; i<input.length; i++) {
+        const numbers = input[i].map(str => Number(str));
+        if(numbers.includes(0)) continue;
+        numbers.sort((x, y) => y-x); // 내림차순
+        const [longest, ...others] = numbers;
+        const isJiggack = (longest * longest) === others[0] * others[0] + others[1] * others[1]
+        answer += isJiggack ? 'right\n' : 'wrong\n'
+    }
+
+    return answer;
 }
-console.log(solution(input(1)));
+console.log(solution(input(3)));

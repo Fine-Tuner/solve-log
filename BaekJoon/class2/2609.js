@@ -17,6 +17,24 @@ const input = (caseNumber) => {
 }
 
 function solution(input) {
-    
+    let answer = "";
+    const [firstNumber, secondNumber] = input;
+
+    // 최대공약수
+    const getGCD = (bigger, smaller) => {
+        while (smaller !== 0) {
+            const reminder = bigger % smaller;
+            bigger = smaller;
+            smaller = reminder;
+        }
+        return bigger;
+    }
+    answer = getGCD(firstNumber, secondNumber) + '\n';
+
+    // 최소공배수
+    const LCM = firstNumber * secondNumber / getGCD(firstNumber, secondNumber)
+    answer += LCM
+
+    return answer;
 }
 console.log(solution(input(1)));
